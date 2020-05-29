@@ -15,23 +15,13 @@ namespace ManyToMany.System.Infrastructure.Persistence
         {
         }
 
-        public DbSet<Authors> Authors { get; set; }
-        public DbSet<Books> Books { get; set; }
-        public DbSet<BooksAuthors> BooksAuthors { get; set; }
+        public virtual DbSet<Authors> Authors { get; set; }
+        public virtual DbSet<Books> Books { get; set; }
+        public virtual DbSet<BooksAuthors> BooksAuthors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(LibraryContext).Assembly);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http: //go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(
-                    "Server=.;Initial Catalog=Library;User ID=sa;Password=CUB5R5YgW8N;MultipleActiveResultSets=True;");
-            }
         }
 
         #region Work with transactions (implementation of Unit of Work pattern).

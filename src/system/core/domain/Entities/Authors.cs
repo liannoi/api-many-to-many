@@ -13,6 +13,6 @@ namespace ManyToMany.System.Core.Domain.Entities
         public string AuthorName { get; set; }
         public string AuthorLastName { get; set; }
 
-        public ICollection<BooksAuthors> BooksAuthors { get; set; }
+        public virtual ICollection<BooksAuthors> BooksAuthors { get; set; }
     }
 }

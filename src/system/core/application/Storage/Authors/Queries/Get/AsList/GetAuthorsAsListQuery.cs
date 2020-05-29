@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList
 {
-    public class GetAuthorsAsListQuery : IRequest<ActorsListViewModel>
+    public class GetAuthorsAsListQuery : IRequest<AuthorsListViewModel>
     {
-        public class GetAuthorsAsListQueryHandler : IRequestHandler<GetAuthorsAsListQuery, ActorsListViewModel>
+        public class GetAuthorsAsListQueryHandler : IRequestHandler<GetAuthorsAsListQuery, AuthorsListViewModel>
         {
             private readonly ILibraryContext _context;
             private readonly IMapper _mapper;
@@ -21,12 +21,12 @@ namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList
                 _mapper = mapper;
             }
 
-            public async Task<ActorsListViewModel> Handle(GetAuthorsAsListQuery request,
+            public async Task<AuthorsListViewModel> Handle(GetAuthorsAsListQuery request,
                 CancellationToken cancellationToken)
             {
-                return new ActorsListViewModel
+                return new AuthorsListViewModel
                 {
-                    Actors = await _context.Authors
+                    Authors = await _context.Authors
                         .ProjectTo<AuthorLookupDto>(_mapper.ConfigurationProvider)
                         .ToListAsync(cancellationToken)
                 };

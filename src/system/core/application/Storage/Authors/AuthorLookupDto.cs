@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using ManyToMany.System.Core.Application.Common.Mappings;
 using ManyToMany.System.Core.Application.Storage.Books;
@@ -18,7 +19,8 @@ namespace ManyToMany.System.Core.Application.Storage.Authors
             profile.CreateMap<Domain.Entities.Authors, AuthorLookupDto>()
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(s => s.AuthorId))
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(s => s.AuthorName))
-                .ForMember(dest => dest.AuthorLastName, opt => opt.MapFrom(s => s.AuthorLastName));
+                .ForMember(dest => dest.AuthorLastName, opt => opt.MapFrom(s => s.AuthorLastName))
+                .ForMember(dest => dest.Books, opt => opt.MapFrom(s => s.BooksAuthors.Select(x => x.Book)));
         }
     }
 }

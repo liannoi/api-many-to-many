@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList
 {
-    public class ActorsListViewModel
+    public class AuthorsListViewModel
     {
-        public IList<AuthorLookupDto> Actors { get; set; }
+        public IList<AuthorLookupDto> Authors { get; set; }
     }
 }
