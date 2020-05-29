@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9796D929-CDF2-497F-AE33-EB0E7F36F17C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "system", "system", "{AE6AA9EB-3582-49BE-A7E1-150577F4F585}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{595E990C-2662-4ABF-9E4D-02E70171B7EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManyToMany.System.Infrastructure", "src\system\infrastructure\ManyToMany.System.Infrastructure.csproj", "{16DDE065-805E-4049-B7EC-13957F7017A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16DDE065-805E-4049-B7EC-13957F7017A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16DDE065-805E-4049-B7EC-13957F7017A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16DDE065-805E-4049-B7EC-13957F7017A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16DDE065-805E-4049-B7EC-13957F7017A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE6AA9EB-3582-49BE-A7E1-150577F4F585} = {9796D929-CDF2-497F-AE33-EB0E7F36F17C}
+		{595E990C-2662-4ABF-9E4D-02E70171B7EB} = {AE6AA9EB-3582-49BE-A7E1-150577F4F585}
+		{16DDE065-805E-4049-B7EC-13957F7017A5} = {AE6AA9EB-3582-49BE-A7E1-150577F4F585}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8D0020B-3F86-4F09-AA1B-2CAAEC617FBF}
+	EndGlobalSection
+EndGlobal
