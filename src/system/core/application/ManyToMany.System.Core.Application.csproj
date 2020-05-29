@@ -5,9 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Storage\Authors" />
-      <Folder Include="Storage\Books" />
-      <Folder Include="Storage\BooksAuthors" />
+      <Folder Include="Storage\Authors\Commands\Create" />
+      <Folder Include="Storage\Authors\Commands\Delete" />
+      <Folder Include="Storage\Authors\Commands\Update" />
+      <Folder Include="Storage\Books\Commands\Create" />
+      <Folder Include="Storage\Books\Commands\Delete" />
+      <Folder Include="Storage\Books\Commands\Update" />
     </ItemGroup>
 
     <ItemGroup>
