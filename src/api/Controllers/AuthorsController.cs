@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManyToMany.WebAPI.Controllers
 {
-    public class AuthorsController : BaseController, IRestfulController<AuthorsListViewModel, AuthorLookupDto>
+    public class AuthorsController : BaseController, IRestfulController<AuthorsListViewModel, AuthorDto>
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -26,22 +26,22 @@ namespace ManyToMany.WebAPI.Controllers
             }
         }
 
-        public Task<ActionResult<AuthorLookupDto>> Create<TCommand>(TCommand command)
+        public Task<ActionResult<AuthorDto>> Create<TCommand>(TCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<AuthorLookupDto>> GetById(int id)
+        public Task<ActionResult<AuthorDto>> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<AuthorLookupDto>> Update<TCommand>(int id, TCommand command)
+        public Task<ActionResult<AuthorDto>> Update<TCommand>(int id, TCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<AuthorLookupDto>> Delete(int id)
+        public Task<ActionResult<AuthorDto>> Delete(int id)
         {
             throw new NotImplementedException();
         }

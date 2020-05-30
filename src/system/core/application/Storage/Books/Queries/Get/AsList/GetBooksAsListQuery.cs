@@ -27,7 +27,7 @@ namespace ManyToMany.System.Core.Application.Storage.Books.Queries.Get.AsList
                 return new BooksListViewModel
                 {
                     Books = await _context.Books
-                        .ProjectTo<BookLookupDto>(_mapper.ConfigurationProvider)
+                        .ProjectTo<BookDto>(_mapper.ConfigurationProvider)
                         .ToListAsync(cancellationToken)
                 };
             }

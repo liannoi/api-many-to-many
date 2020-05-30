@@ -27,7 +27,7 @@ namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList
                 return new AuthorsListViewModel
                 {
                     Authors = await _context.Authors
-                        .ProjectTo<AuthorLookupDto>(_mapper.ConfigurationProvider)
+                        .ProjectTo<AuthorDto>(_mapper.ConfigurationProvider)
                         .ToListAsync(cancellationToken)
                 };
             }

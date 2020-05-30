@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ManyToMany.System.Core.Application.Storage.Books.Queries.Get
 {
-    public class GetBookQuery : IRequest<BookLookupDto>
+    public class GetBookQuery : IRequest<BookDto>
     {
         public int BookId { get; set; }
 
-        public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookLookupDto>
+        public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto>
         {
             private readonly ILibraryContext _context;
             private readonly IMapper _mapper;
@@ -24,11 +24,11 @@ namespace ManyToMany.System.Core.Application.Storage.Books.Queries.Get
                 _mapper = mapper;
             }
 
-            public async Task<BookLookupDto> Handle(GetBookQuery request, CancellationToken cancellationToken)
+            public async Task<BookDto> Handle(GetBookQuery request, CancellationToken cancellationToken)
             {
                 return await _context.Books
                     .Where(e => e.BookId == request.BookId)
-                    .ProjectTo<BookLookupDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<BookDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(cancellationToken);
             }
         }

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get
 {
-    public class GetAuthorQuery : IRequest<AuthorLookupDto>
+    public class GetAuthorQuery : IRequest<AuthorDto>
     {
         public int AuthorId { get; set; }
 
-        public class GetAuthorQueryHandler : IRequestHandler<GetAuthorQuery, AuthorLookupDto>
+        public class GetAuthorQueryHandler : IRequestHandler<GetAuthorQuery, AuthorDto>
         {
             private readonly ILibraryContext _context;
             private readonly IMapper _mapper;
@@ -24,11 +24,11 @@ namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get
                 _mapper = mapper;
             }
 
-            public async Task<AuthorLookupDto> Handle(GetAuthorQuery request, CancellationToken cancellationToken)
+            public async Task<AuthorDto> Handle(GetAuthorQuery request, CancellationToken cancellationToken)
             {
                 return await _context.Authors
                     .Where(e => e.AuthorId == request.AuthorId)
-                    .ProjectTo<AuthorLookupDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<AuthorDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(cancellationToken);
             }
         }
