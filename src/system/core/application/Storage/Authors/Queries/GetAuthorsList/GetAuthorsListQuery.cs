@@ -6,22 +6,22 @@ using ManyToMany.System.Core.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList
+namespace ManyToMany.System.Core.Application.Storage.Authors.Queries.GetAuthorsList
 {
-    public class GetAuthorsAsListQuery : IRequest<AuthorsListViewModel>
+    public class GetAuthorsListQuery : IRequest<AuthorsListViewModel>
     {
-        public class GetAuthorsAsListQueryHandler : IRequestHandler<GetAuthorsAsListQuery, AuthorsListViewModel>
+        public class GetAuthorsListQueryHandler : IRequestHandler<GetAuthorsListQuery, AuthorsListViewModel>
         {
             private readonly ILibraryContext _context;
             private readonly IMapper _mapper;
 
-            public GetAuthorsAsListQueryHandler(ILibraryContext context, IMapper mapper)
+            public GetAuthorsListQueryHandler(ILibraryContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
             }
 
-            public async Task<AuthorsListViewModel> Handle(GetAuthorsAsListQuery request,
+            public async Task<AuthorsListViewModel> Handle(GetAuthorsListQuery request,
                 CancellationToken cancellationToken)
             {
                 return new AuthorsListViewModel

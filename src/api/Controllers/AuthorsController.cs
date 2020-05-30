@@ -1,49 +1,34 @@
-using System;
 using System.Threading.Tasks;
-using FluentValidation;
-using ManyToMany.System.Core.Application.Storage.Authors;
-using ManyToMany.System.Core.Application.Storage.Authors.Queries.Get.AsList;
+using ManyToMany.System.Core.Application.Storage.Authors.Commands.Create;
+using ManyToMany.System.Core.Application.Storage.Authors.Queries.GetAuthorDetail;
+using ManyToMany.System.Core.Application.Storage.Authors.Queries.GetAuthorsList;
 using ManyToMany.WebAPI.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManyToMany.WebAPI.Controllers
 {
-    public class AuthorsController : BaseController, IRestfulController<AuthorsListViewModel, AuthorDto>
+    public class AuthorsController : BaseController,
+        IRestfulController<AuthorsListViewModel, CreateAuthorCommand, AuthorDto>
     {
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<AuthorsListViewModel>> GetAll()
         {
-            try
-            {
-                return Ok(await Mediator.Send(new GetAuthorsAsListQuery()));
-            }
-            catch (ValidationException e)
-            {
-                return BadRequest(e.Message);
-            }
+            return Ok(await Mediator.Send(new GetAuthorsListQuery()));
         }
 
-        public Task<ActionResult<AuthorDto>> Create<TCommand>(TCommand command)
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Create([FromBody] CreateAuthorCommand command)
         {
-            throw new NotImplementedException();
+            await Mediator.Send(command);
+            return NoContent();
         }
 
-        public Task<ActionResult<AuthorDto>> GetById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AuthorDto>> GetById(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<ActionResult<AuthorDto>> Update<TCommand>(int id, TCommand command)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ActionResult<AuthorDto>> Delete(int id)
-        {
-            throw new NotImplementedException();
+            return Ok(await Mediator.Send(new GetAuthorDetailQuery {AuthorId = id}));
         }
     }
 }

@@ -1,42 +1,36 @@
-using System;
 using System.Threading.Tasks;
-using FluentValidation;
-using ManyToMany.System.Core.Application.Storage.Books;
-using ManyToMany.System.Core.Application.Storage.Books.Queries.Get.AsList;
+using ManyToMany.System.Core.Application.Storage.Books.Commands.Create;
+using ManyToMany.System.Core.Application.Storage.Books.Queries.GetBookDetail;
+using ManyToMany.System.Core.Application.Storage.Books.Queries.GetBooksList;
 using ManyToMany.WebAPI.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManyToMany.WebAPI.Controllers
 {
-    public class BooksController : BaseController, IRestfulController<BooksListViewModel, BookDto>
+    public class BooksController : BaseController, IRestfulController<BooksListViewModel, CreateBookCommand, BookDto>
     {
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<BooksListViewModel>> GetAll()
         {
-            try
-            {
-                return Ok(await Mediator.Send(new GetBooksAsListQuery()));
-            }
-            catch (ValidationException e)
-            {
-                return BadRequest(e.Message);
-            }
+            return Ok(await Mediator.Send(new GetBooksListQuery()));
         }
 
-        public Task<ActionResult<BookDto>> Create<TCommand>(TCommand command)
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Create([FromBody] CreateBookCommand command)
         {
-            throw new NotImplementedException();
+            await Mediator.Send(command);
+            return NoContent();
         }
 
-        public Task<ActionResult<BookDto>> GetById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BookDto>> GetById(int id)
         {
-            throw new NotImplementedException();
+            return Ok(await Mediator.Send(new GetBookDetailQuery {BookId = id}));
         }
 
-        public Task<ActionResult<BookDto>> Update<TCommand>(int id, TCommand command)
+        /*public Task<ActionResult<BookDto>> Update<TCommand>(int id, TCommand command)
         {
             throw new NotImplementedException();
         }
@@ -44,6 +38,6 @@ namespace ManyToMany.WebAPI.Controllers
         public Task<ActionResult<BookDto>> Delete(int id)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

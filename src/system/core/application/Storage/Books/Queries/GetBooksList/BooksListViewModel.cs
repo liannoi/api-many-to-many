@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ManyToMany.System.Core.Application.Storage.Books.Queries.Get.AsList
+namespace ManyToMany.System.Core.Application.Storage.Books.Queries.GetBooksList
 {
     public class BooksListViewModel
     {

@@ -1,7 +1,7 @@
 using System;
 using ManyToMany.System.Infrastructure.Persistence;
 
-namespace ManyToMany.System.Core.Application.UnitTests.Core.Cqrs
+namespace ManyToMany.System.Core.Application.UnitTests.Common.Cqrs
 {
     public class CommandTestBase : IDisposable
     {

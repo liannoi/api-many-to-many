@@ -18,14 +18,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Core" />
-      <Folder Include="Storage\Authors\Commands\Create" />
-      <Folder Include="Storage\Authors\Commands\Delete" />
-      <Folder Include="Storage\Authors\Commands\Update" />
-      <Folder Include="Storage\Authors\Queries\Get\AsList" />
-      <Folder Include="Storage\Books\Commands\Create" />
-      <Folder Include="Storage\Books\Commands\Delete" />
-      <Folder Include="Storage\Books\Commands\Update" />
+      <Folder Include="Storage\Authors\Commands" />
+      <Folder Include="Storage\Authors\Queries" />
     </ItemGroup>
 
     <ItemGroup>

@@ -3,7 +3,7 @@ using ManyToMany.System.Core.Domain.Entities;
 using ManyToMany.System.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace ManyToMany.System.Core.Application.UnitTests.Core.Cqrs
+namespace ManyToMany.System.Core.Application.UnitTests.Common.Cqrs
 {
     public class LibraryContextFactory
     {

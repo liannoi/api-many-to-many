@@ -1,7 +1,7 @@
 using System;
 using AutoMapper;
-using ManyToMany.System.Core.Application.Storage.Authors;
-using ManyToMany.System.Core.Application.Storage.Books;
+using ManyToMany.System.Core.Application.Storage.Authors.Queries.GetAuthorDetail;
+using ManyToMany.System.Core.Application.Storage.Books.Queries.GetBooksList;
 using ManyToMany.System.Core.Domain.Entities;
 using Shouldly;
 using Xunit;
@@ -21,7 +21,7 @@ namespace ManyToMany.System.Core.Application.UnitTests.Common.Mappings
 
         [Theory]
         [InlineData(typeof(Books), typeof(BookDto))]
-        [InlineData(typeof(Authors), typeof(AuthorDto))]
+        [InlineData(typeof(Authors), typeof(AuthorDetailViewModel))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

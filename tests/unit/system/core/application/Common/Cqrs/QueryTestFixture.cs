@@ -3,7 +3,7 @@ using AutoMapper;
 using ManyToMany.System.Core.Application.Common.Mappings;
 using ManyToMany.System.Infrastructure.Persistence;
 
-namespace ManyToMany.System.Core.Application.UnitTests.Core.Cqrs
+namespace ManyToMany.System.Core.Application.UnitTests.Common.Cqrs
 {
     public class QueryTestFixture : IDisposable
     {

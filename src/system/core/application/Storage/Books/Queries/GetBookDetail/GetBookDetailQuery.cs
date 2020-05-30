@@ -7,28 +7,29 @@ using ManyToMany.System.Core.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace ManyToMany.System.Core.Application.Storage.Books.Queries.Get
+namespace ManyToMany.System.Core.Application.Storage.Books.Queries.GetBookDetail
 {
-    public class GetBookQuery : IRequest<BookDto>
+    public class GetBookDetailQuery : IRequest<BookDetailViewModel>
     {
         public int BookId { get; set; }
 
-        public class GetBookQueryHandler : IRequestHandler<GetBookQuery, BookDto>
+        public class GetBookDetailQueryHandler : IRequestHandler<GetBookDetailQuery, BookDetailViewModel>
         {
             private readonly ILibraryContext _context;
             private readonly IMapper _mapper;
 
-            public GetBookQueryHandler(ILibraryContext context, IMapper mapper)
+            public GetBookDetailQueryHandler(ILibraryContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
             }
 
-            public async Task<BookDto> Handle(GetBookQuery request, CancellationToken cancellationToken)
+            public async Task<BookDetailViewModel> Handle(GetBookDetailQuery request,
+                CancellationToken cancellationToken)
             {
                 return await _context.Books
                     .Where(e => e.BookId == request.BookId)
-                    .ProjectTo<BookDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<BookDetailViewModel>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(cancellationToken);
             }
         }
