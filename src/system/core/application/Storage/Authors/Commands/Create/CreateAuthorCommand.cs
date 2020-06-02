@@ -5,7 +5,6 @@ using ManyToMany.System.Core.Application.Common.Interfaces;
 using ManyToMany.System.Core.Application.Storage.Books.Queries.GetBooksList;
 using ManyToMany.System.Core.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ManyToMany.System.Core.Application.Storage.Authors.Commands.Create
@@ -57,9 +56,7 @@ namespace ManyToMany.System.Core.Application.Storage.Authors.Commands.Create
                     await _context.BooksAuthors.AddAsync(new BooksAuthors
                     {
                         AuthorId = result.Entity.AuthorId,
-                        Book = await _context.Books
-                            .Where(e => e.BookId == book.BookId)
-                            .FirstOrDefaultAsync(cancellationToken)
+                        Book = await _context.Books.FindAsync(book.BookId)
                     }, cancellationToken);
 
                 await _context.SaveChangesAsync(cancellationToken);

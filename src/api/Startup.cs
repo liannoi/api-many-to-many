@@ -50,6 +50,10 @@ namespace ManyToMany.WebAPI
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Library API v1"));
 
+            app.UseCors(options => options.WithOrigins("http://localhost:3000", "http://192.168.1.101:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
                 endpoints.MapControllerRoute("default", "{controller=Authors}/{action=GetAll}/{id?}"));
